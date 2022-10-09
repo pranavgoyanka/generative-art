@@ -14,21 +14,21 @@ var leftRight = false;
 function draw(x, y, width = size, height = size) {
   var leftToRight = Math.random() >= 0.5;
 
-  // if (leftToRight) {
-  //   context.moveTo(x, y);
-  //   context.lineTo(x + width, y + height);
-  // } else {
-  //   context.moveTo(x + width, y);
-  //   context.lineTo(x, y + height);
-  // }
-
-  if (!leftRight) {
+  if (leftToRight) {
     context.moveTo(x, y);
     context.lineTo(x + width, y + height);
   } else {
     context.moveTo(x + width, y);
     context.lineTo(x, y + height);
   }
+
+  //   if (!leftRight) {
+  //     context.moveTo(x, y);
+  //     context.lineTo(x + width, y + height);
+  //   } else {
+  //     context.moveTo(x + width, y);
+  //     context.lineTo(x, y + height);
+  //   }
   // leftRight = !leftRight;
   context.stroke();
 }
@@ -46,11 +46,11 @@ for (var x = 0; x < size; x += step) {
     // y += 10;
     // }
   }
-  y += 10;
-  leftRight = !leftRight;
-  if (!leftRight) {
-    x += 10;
-  }
+  //   y += 10;
+  //   leftRight = !leftRight;
+  //   if (!leftRight) {
+  //     x += 10;
+  //   }
 }
 
 // clear area
