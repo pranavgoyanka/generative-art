@@ -13,29 +13,28 @@
       integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="./src/stylesheet.css" />
+    <link rel="stylesheet" href="./stylesheet.css" />
   </head>
   <body>
     <div class="container">
       <div class="row">
         <div class="col-sm"></div>
         <div class="col-sm">
-          <div class="text-center landing">
-            generative art
-            <br />
-            <br />
-            <a href="./src/tiltedLines.html"> tilted lines </a>
-            <br />
-            <a href="./src/waves.html">waves</a>
+          <div class="border">
+            <div id="frame"></div>
+          </div>
+          <div class="controls">
+            <i class="fa fa-rotate-right" onclick="rerender()"></i>
           </div>
         </div>
         <div class="col-sm"></div>
       </div>
     </div>
+
+    <script src="./waves.js"></script>
     <script
       src="https://kit.fontawesome.com/6b98e9e337.js"
       crossorigin="anonymous"
     ></script>
-    <footer>made with ✨ by pranav goyanka</footer>
   </body>
 </html>

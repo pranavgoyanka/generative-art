@@ -28,6 +28,11 @@
     -16px 16px var(--blur) 1px rgba(0, 0, 0, 0.01);
 }
 
+.landing {
+  font-size: 30px;
+  font-style: italic;
+  text-decoration: underline;
+}
 .frame {
   left: 3%;
   top: 2.5%;
@@ -40,5 +45,6 @@
 
 .controls {
   padding-top: 10px;
+  font-size: 25px;
   /* padding-right: auto; */
 }
