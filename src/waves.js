@@ -1,22 +1,23 @@
-var step = 10;
+const canvasSketch = require('canvas-sketch');
+const p5 = require('p5');
+
+const preload = p5 => {
+  // You can use p5.loadImage() here, etc...
+};
+
+const settings = {
+  // Pass the p5 instance, and preload function if necessary
+  p5: { p5, preload },
+  dimensions: [2048, 2048]
+  // Turn on a render loop
+  // animate: true
+};
+
 var lines = [];
-var wdt = 400;
+var wdt = 2048;
 
-function setup() {
-  var myCanvas = createCanvas(400, 400);
-  myCanvas.parent("frame");
-}
 
-function draw() {
-  background("fff");
-  strokeWeight(1);
-  // point(200, 200);
-  createLines(10);
-  createLines(20);
-  noLoop();
-}
-
-function createLines(step) {
+function createLines(p5, step) {
   // create lines full of points
 
   for (var i = step; i < wdt; i += step) {
@@ -24,7 +25,7 @@ function createLines(step) {
     var ln = [];
 
     for (var j = step; j <= wdt - step; j += step) {
-      var point = { x: j, y: i + (random() * step) / 2 };
+      var point = { x: j, y: i + (p5.random() * step) / 2 };
       ln.push(point);
       console.log(point);
     }
@@ -35,13 +36,23 @@ function createLines(step) {
   for (var i = 0; i < lines.length; i++) {
     // console.log(lines[i]);
     for (var j = 0; j < lines[i].length - 1; j++) {
-      line(lines[i][j].x, lines[i][j].y, lines[i][j + 1].x, lines[i][j + 1].y);
+      p5.line(lines[i][j].x, lines[i][j].y, lines[i][j + 1].x, lines[i][j + 1].y);
     }
   }
   lines = [];
 }
 
-function rerender() {
-  //   clear();
-  redraw();
-}
+
+
+
+canvasSketch(() => {
+  // Return a renderer, which is like p5.js 'draw' function
+  return ({ p5, time, width, height }) => {
+    // Draw with p5.js things
+    p5.background("fff");
+    p5.strokeWeight(1);
+    createLines(p5, 10 * 2048 / 400);
+    createLines(p5, 20 * 2048 / 400);
+    p5.noLoop();
+  };
+}, settings);
